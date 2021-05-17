@@ -2,7 +2,7 @@
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
-const { v4: uuidv4 } = require('uuid');
+const { v1: uuidv1 } = require('uuid');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -29,7 +29,7 @@ app.post("/api/notes", (req, res) => {
 
     // EXTRACT USER NOTE FROM BODY.  
     const newNote = req.body;
-    newNote.id = uuidv4(); // GENERATE UNIQUE ID npm package
+    newNote.id = uuidv1(); // GENERATE UNIQUE ID npm package
     
     // RETRIEVE db.json ARRAY FIRST
     let data = JSON.parse(fs.readFileSync("./db/db.json", "utf8"));
@@ -37,7 +37,7 @@ app.post("/api/notes", (req, res) => {
     // THEN PUSH NEW NOTE TO db.json ARRAY
     data.push(newNote);
 
-    console.log(`Note with ID: ${newNote.id} saved.`)
+    console.log(`Note with ID: ${newNote.id} saved.`);
 
     // THEN WRITE SAVE to the ./db/db.json FILE
     fs.writeFileSync('./db/db.json', JSON.stringify(data));
@@ -57,7 +57,7 @@ app.delete("/api/notes/:id", (req, res) => {
     // FILTER EXISTING JSON PARSED ARRAY SO THAT THE NOTE WITH ID THAT'S BEING DELETED DOES NOT SHOW AGAIN
     const updateData = data.filter( note => note.id.toString() !== noteId );
 
-    console.log(`Note with ID: ${noteId} deleted.`)
+    console.log(`Note with ID: ${noteId} deleted.`);
 
     // THEN WRITE SAVE to the ./db/db.json FILE WITH THE FILTERED ARRAY
     fs.writeFileSync('./db/db.json', JSON.stringify(updateData));
