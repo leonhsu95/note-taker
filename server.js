@@ -29,7 +29,12 @@ app.post("/api/notes", (req, res) => {
 
     // EXTRACT USER NOTE FROM BODY.  
     const newNote = req.body;
-    newNote.id = uuidv4(); // GENERATE UNIQUE ID npm package
+    let counter;
+    
+    for (let i = 0; i < newNote.length; i++) {
+        counter = i;
+        newNote.id = counter;
+    }
     
     // RETRIEVE db.json ARRAY FIRST
     let data = JSON.parse(fs.readFileSync("./db/db.json", "utf8"));
