@@ -24,5 +24,24 @@ app.get("/api/notes", (req, res) => {
     res.json(data);
 });
 
+// API POST USER SAVED NOTES to ./db/db.json
+app.post("/api/notes", (req, res) => {
+
+    // EXTRACT USER NOTE FROM BODY.  
+    const newNote = req.body;
+    newNote.id = uuidv4(); // GENERATE UNIQUE ID npm package
+    
+    // RETRIEVE db.json ARRAY FIRST
+    let data = JSON.parse(fs.readFileSync("./db/db.json", "utf8"));
+
+    // THEN PUSH NEW NOTE TO db.json ARRAY
+    data.push(newNote);
+
+    // THEN WRITE SAVE to the ./db/db.json FILE
+    fs.writeFileSync('./db/db.json', JSON.stringify(data));
+
+    res.json(data);
+});
+
 app.listen(PORT, () => {console.log(`App listening on http://localhost:${PORT}`);});
 
