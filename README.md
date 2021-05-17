@@ -1,6 +1,6 @@
 # Note Taker Application
 
-Link to the deployed test website can be viewed here on Heroku: [Note Taker Application](https://github.com/leonhsu95/note-taker)
+Link to the deployed test website can be viewed here on Heroku: [Note Taker Application](https://desolate-taiga-17348.herokuapp.com/)
 
 ## Description
 
