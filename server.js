@@ -37,6 +37,8 @@ app.post("/api/notes", (req, res) => {
     // THEN PUSH NEW NOTE TO db.json ARRAY
     data.push(newNote);
 
+    console.log(`Note with ID: ${newNote.id} saved.`)
+
     // THEN WRITE SAVE to the ./db/db.json FILE
     fs.writeFileSync('./db/db.json', JSON.stringify(data));
 
@@ -54,6 +56,8 @@ app.delete("/api/notes/:id", (req, res) => {
 
     // FILTER EXISTING JSON PARSED ARRAY SO THAT THE NOTE WITH ID THAT'S BEING DELETED DOES NOT SHOW AGAIN
     const updateData = data.filter( note => note.id.toString() !== noteId );
+
+    console.log(`Note with ID: ${noteId} deleted.`)
 
     // THEN WRITE SAVE to the ./db/db.json FILE WITH THE FILTERED ARRAY
     fs.writeFileSync('./db/db.json', JSON.stringify(updateData));
