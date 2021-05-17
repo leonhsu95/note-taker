@@ -43,5 +43,23 @@ app.post("/api/notes", (req, res) => {
     res.json(data);
 });
 
+// API DELETE request
+app.delete("/api/notes/:id", (req, res) => {
+
+    // CAPTURED VALUES POPULATED IN req.params. RETRIEVE ID VALUE
+    let noteId = req.params.id.toString();
+    
+    // RETRIEVE db.json ARRAY FIRST
+    let data = JSON.parse(fs.readFileSync("./db/db.json", "utf8"));
+
+    // FILTER EXISTING JSON PARSED ARRAY SO THAT THE NOTE WITH ID THAT'S BEING DELETED DOES NOT SHOW AGAIN
+    const updateData = data.filter( note => note.id.toString() !== noteId );
+
+    // THEN WRITE SAVE to the ./db/db.json FILE WITH THE FILTERED ARRAY
+    fs.writeFileSync('./db/db.json', JSON.stringify(updateData));
+
+    res.json(updateData);
+});
+
 app.listen(PORT, () => {console.log(`App listening on http://localhost:${PORT}`);});
 
