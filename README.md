@@ -74,7 +74,7 @@ SOFTWARE.
 ## Tests
 
 This project can be tested with [JS Validation Service](https://jshint.com/).
-The Inquirer Package can tested further, please refer to documentation at [npm Inquirer](https://www.npmjs.com/package/inquirer) and [npm nodemon](https://www.npmjs.com/package/nodemon).
+The 'Express' middleware, 'Nodemon' and 'UUID' npm packges were used in this project so please refer their respective documentations at [npm express](https://www.npmjs.com/package/express) and [npm nodemon](https://www.npmjs.com/package/nodemon) and [npm uuid](https://www.npmjs.com/package/uuid).
 
 
 
