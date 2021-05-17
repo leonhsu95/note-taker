@@ -1,6 +1,6 @@
-# Team Profile Generator
+# Note Taker Application
 
-Link to the deployed website repository can be viewed here: [Team Profile Generator](https://github.com/leonhsu95/note-taker)
+Link to the deployed test website can be viewed here on Heroku: [Note Taker Application](https://github.com/leonhsu95/note-taker)
 
 ## Description
 
